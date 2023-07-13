@@ -1,4 +1,5 @@
 export const ROUTES = {
+  BASE: '/',
   PORTFOLIO: {
     PATH: '/portfolio',
     ADD: {
@@ -11,6 +12,7 @@ export const ROUTES = {
 }
 
 export const SAFE_ROUTES = [
+  ROUTES.BASE,
   ROUTES.LOGIN.PATH,
 ]
 

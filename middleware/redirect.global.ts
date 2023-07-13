@@ -1,12 +1,13 @@
-import { PROTECTED_ROUTES, ROUTES } from '~/route/routes'
+import { PROTECTED_ROUTES, ROUTES, SAFE_ROUTES } from '~/route/routes'
+import { LOCAL_KEYS } from '~/storage/storageConstants'
 
 export default defineNuxtRouteMiddleware((to) => {
   if (process.client) {
-    const token = localStorage.getItem('login')
+    const session = localStorage.getItem(LOCAL_KEYS.SESSION)
 
-    if (!token && PROTECTED_ROUTES.includes(to.fullPath))
+    if (!session && PROTECTED_ROUTES.includes(to.fullPath))
       return navigateTo('/login')
-    else if (token && to.fullPath === ROUTES.LOGIN.PATH)
+    else if (session && SAFE_ROUTES.includes(to.fullPath))
       return navigateTo(ROUTES.PORTFOLIO.PATH)
   }
 })

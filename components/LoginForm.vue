@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { LOCAL_KEYS } from '~/storage/storageConstants'
+
 const username = ref('')
 const password = ref('')
 
@@ -6,16 +8,15 @@ const router = useRouter()
 
 function go() {
   if (username.value && password.value && process.client) {
-    localStorage.setItem('login', 'login-token-123')
+    localStorage.setItem(LOCAL_KEYS.SESSION, JSON.stringify({ username: username.value, token: 'random_token' }))
 
-    // TODO: Add cookie or local storage
     router.push('/portfolio')
   }
 }
 </script>
 
 <template>
-  <div class="gray-100 m-40 h-full flex flex-col items-center justify-center bg-gray-800 p-10">
+  <div gray-100 m-40 h-full flex flex-col items-center justify-center bg-gray-800 p-10>
     <input
       id="input"
       v-model="username"
