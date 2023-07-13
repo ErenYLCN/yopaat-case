@@ -12,7 +12,6 @@ export const ROUTES = {
 }
 
 export const SAFE_ROUTES = [
-  ROUTES.BASE,
   ROUTES.LOGIN.PATH,
 ]
 

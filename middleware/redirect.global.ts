@@ -5,9 +5,9 @@ export default defineNuxtRouteMiddleware((to) => {
   if (process.client) {
     const session = localStorage.getItem(LOCAL_KEYS.SESSION)
 
-    if (!session && PROTECTED_ROUTES.includes(to.fullPath))
+    if (!session && !SAFE_ROUTES.includes(to.fullPath))
       return navigateTo('/login')
-    else if (session && SAFE_ROUTES.includes(to.fullPath))
+    else if (session && !PROTECTED_ROUTES.includes(to.fullPath))
       return navigateTo(ROUTES.PORTFOLIO.PATH)
   }
 })
