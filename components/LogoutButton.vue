@@ -12,7 +12,7 @@ function logOut() {
 
 <template>
   <button
-    bg-transparent text-sm underline btn
+    w-full bg-transparent text-sm underline btn
     @click="logOut"
   >
     Log Out

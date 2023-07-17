@@ -6,8 +6,8 @@ const { name } = storeToRefs(appStore)
 </script>
 
 <template>
-  <div>
-    <div mb-1>
+  <div w-24>
+    <div mb-1 w-full>
       {{ name }}
     </div>
     <LogoutButton />
