@@ -3,6 +3,10 @@ import { storeToRefs } from 'pinia';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'vue-chartjs'
 
+useHead({
+  title: 'Yopaat - Portfolio'
+})
+
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 definePageMeta({
@@ -68,7 +72,7 @@ function getRandomColor() {
 <div style="height: 1px;" w-full bg-gray-400 />
 </div>
 
-<div flex justify-between pt-10>
+<div flex flex-col lg:flex-row justify-between pt-10>
   <div w-full text-left>
     <ul p-4>
       <li v-for="userAssetValue, assetSymbol in userAssetValues" border-2 border-gray-300 mb-3 rounded-2 p-3> 
@@ -78,7 +82,7 @@ function getRandomColor() {
       </li>
     </ul>
   </div>
-  <div w-full min-h-96 border-l-1 border-gray-400 flex flex-col justify-center align-center p-16>
+  <div w-full min-h-96 border-l-0 lg:border-l-1 border-t-1 lg:border-t-0 border-gray-400 flex flex-col justify-center align-center p-4 md:p-16>
     <Pie :data="data" :options="options" />
   </div>
 </div>

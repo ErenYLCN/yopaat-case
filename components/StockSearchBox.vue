@@ -71,7 +71,7 @@ function removeAsset(asset: Asset) {
 </script>
 
 <template>
-  <div m-24 border-2 border-gray-400 p-6>
+  <div sm-24 m-2 border-2 border-gray-400 p-6 sm:m-12>
     <input
       id="input"
       v-model="searchInput"
@@ -84,20 +84,20 @@ function removeAsset(asset: Asset) {
 
     <div v-if="data?.length" h-96 overflow-scroll>
       <ul>
-        <li v-for="asset in filteredData" :key="asset.symbol" mb-6 flex items-center justify-between border-2 border-gray-600 p-4 text-left>
+        <li v-for="asset in filteredData" :key="asset.symbol" mb-6 flex flex-col items-center justify-between gap-1 border-2 border-gray-600 p-4 text-left sm:flex-row>
           <div>{{ asset.symbol }} - {{ asset.lastPrice }}</div>
-          <div v-if="assetValues" flex items-center gap-2>
+          <div v-if="assetValues" flex flex-col items-center gap-2 sm:flex-row>
             <input
               id="input"
               v-model="assetValues[asset.symbol]"
               placeholder="Search"
               type="number" autocomplete="off"
-              p="x-4 y-2" bg="transparent" w-48
+              p="x-4 y-2" bg="transparent" w-full
               border="~ rounded gray-200 dark:gray-700"
               outline="none active:none"
             >
 
-            <div v-if="!userAssets[asset.symbol]" w-48>
+            <div v-if="!userAssets[asset.symbol]" w-full sm:w-48>
               <button
                 w-full text-sm btn
                 @click="addAsset(asset)"
@@ -105,13 +105,14 @@ function removeAsset(asset: Asset) {
                 Add
               </button>
             </div>
-            <div v-else w-48 flex items-center gap-2 class="flex gap-2">
+            <div v-else w-full flex items-center gap-2 sm:w-48 style="display: flex; gap: 0.5rem">
               <button
                 w-full text-sm btn
                 @click="addAsset(asset)"
               >
                 Update
               </button>
+
               <button
                 w-full text-sm btn
                 @click="removeAsset(asset)"

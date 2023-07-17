@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: 'Yopaat - Add',
+})
+
 definePageMeta({
   middleware: [
     'set-user-info',

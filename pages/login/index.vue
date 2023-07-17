@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useHead({
+  title: 'Yopaat - Login',
+})
+</script>
+
 <template>
   <div>
     <div text-left>
